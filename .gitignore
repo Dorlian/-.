@@ -1,2 +1,8 @@
 ﻿desktop.ini
 *.txt
+# Исключаем оригинальные PDF с кириллицей
+Волков*
+ПрЭВМ*
+Сертификат*
+Sertifikat_s*
+stepik-certificate-*

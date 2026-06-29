@@ -694,125 +694,222 @@
   <!-- ═══════════════════════════════ TAB: CERTIFICATES ═══════════════════════════════ -->
   <div id="tab-certs" class="tab-content">
 
+    <style>
+      .certs-page-title {
+        font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800;
+        background: linear-gradient(135deg, #f1f5f9, #06b6d4, #6366f1);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        margin-bottom: 8px;
+      }
+      .certs-page-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 32px; }
+      .pdf-group-label {
+        font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+        color: var(--text-muted); margin: 32px 0 16px;
+        display: flex; align-items: center; gap: 12px;
+      }
+      .pdf-group-label::after { content:''; flex:1; height:1px; background: linear-gradient(to right, rgba(99,102,241,0.3), transparent); }
+      .pdf-entry {
+        background: var(--bg-card); border: 1px solid var(--border-soft);
+        border-radius: var(--radius); overflow: hidden; margin-bottom: 16px;
+        transition: border-color 0.3s;
+      }
+      .pdf-entry:hover { border-color: var(--border); }
+      .pdf-entry.gold-entry { border-color: rgba(245,158,11,0.22); background: linear-gradient(135deg, rgba(245,158,11,0.05), var(--bg-card)); }
+      .pdf-entry.gold-entry:hover { border-color: rgba(245,158,11,0.4); }
+      .pdf-header {
+        display: flex; align-items: center; gap: 16px;
+        padding: 20px 24px; cursor: pointer; user-select: none;
+        transition: background 0.2s;
+      }
+      .pdf-header:hover { background: rgba(255,255,255,0.03); }
+      .pdf-logo {
+        width: 48px; height: 48px; border-radius: 14px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 24px; flex-shrink: 0;
+      }
+      .pdf-logo.samsung { background: linear-gradient(135deg, #1428a0, #2048c8); }
+      .pdf-logo.stepik  { background: linear-gradient(135deg, #7b2ff7, #a855f7); }
+      .pdf-logo.fips    { background: linear-gradient(135deg, #b45309, #d97706); }
+      .pdf-logo.pending { background: linear-gradient(135deg, #374151, #4b5563); }
+      .pdf-header-info { flex: 1; min-width: 0; }
+      .pdf-entry-title { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; line-height: 1.3; }
+      .pdf-entry-meta  { font-size: 13px; color: var(--text-secondary); display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+      .pdf-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+      .badge-gold   { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); color: var(--gold-light); }
+      .badge-purple { background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.25); color: #c4b5fd; }
+      .badge-cyan   { background: rgba(6,182,212,0.1);   border: 1px solid rgba(6,182,212,0.2);   color: #67e8f9; }
+      .badge-blue   { background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.25); color: #a5b4fc; }
+      .badge-green  { background: rgba(16,185,129,0.1);  border: 1px solid rgba(16,185,129,0.25);  color: var(--green-light); }
+      .pdf-toggle {
+        width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+        background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2);
+        display: flex; align-items: center; justify-content: center;
+        color: var(--accent); font-size: 16px;
+        transition: all 0.3s;
+      }
+      .pdf-entry.open .pdf-toggle { background: rgba(99,102,241,0.25); transform: rotate(180deg); }
+      .pdf-viewer { display: none; padding: 0 24px 24px; }
+      .pdf-entry.open .pdf-viewer { display: block; }
+      .pdf-viewer embed {
+        width: 100%; height: 780px; border: none;
+        border-radius: 10px; background: #fff;
+        display: block;
+      }
+      .pdf-actions { display: flex; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+      .pdf-action-btn {
+        display: inline-flex; align-items: center; gap: 6px;
+        background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.25);
+        color: #a5b4fc; padding: 7px 16px; border-radius: 20px;
+        font-size: 13px; font-weight: 600; text-decoration: none;
+        transition: all 0.2s;
+      }
+      .pdf-action-btn:hover { background: rgba(99,102,241,0.25); color: #fff; }
+      .pdf-pending-msg {
+        padding: 40px; text-align: center;
+        color: var(--text-muted); font-size: 14px; line-height: 1.8;
+      }
+      @media (max-width: 600px) {
+        .pdf-header { padding: 16px; gap: 12px; }
+        .pdf-viewer { padding: 0 16px 16px; }
+        .pdf-viewer embed { height: 500px; }
+      }
+    </style>
+
     <div class="certs-page-title">Сертификаты и свидетельства</div>
-    <div class="certs-page-sub">Документы, подтверждающие квалификацию и участие в разработке зарегистрированных программных продуктов</div>
+    <div class="certs-page-sub">Оригинальные документы — нажмите на карточку чтобы открыть PDF</div>
 
-    <div class="certs-section-label">🏛️ Свидетельства о государственной регистрации программ для ЭВМ (Роспатент / ФИПС)</div>
-    <div class="certs-grid">
+    <div class="pdf-group-label">🏛️ Свидетельства о государственной регистрации программ для ЭВМ (Роспатент / ФИПС)</div>
 
-      <div class="pravevo-full-card">
-        <div class="pravevo-reg-num">🏆 ПрЭВМ №2026664974</div>
-        <div class="pravevo-full-title">«Система анализа экспортного контроля научных публикаций»</div>
-        <div class="pravevo-full-desc">
-          Программа предназначена для автоматизированного анализа научных документов с целью идентификации
-          товаров и технологий двойного назначения. Функции: извлечение текста, определение названия работы,
-          извлечение ключевых терминов, определение недопустимых терминов, подбор кодов ТН ВЭД ЕАЭС.
+    <div class="pdf-entry gold-entry" id="pe-praewm1">
+      <div class="pdf-header" onclick="togglePdf('pe-praewm1')">
+        <div class="pdf-logo fips">🏛️</div>
+        <div class="pdf-header-info">
+          <div class="pdf-entry-title">«Система анализа экспортного контроля научных публикаций»</div>
+          <div class="pdf-entry-meta">
+            <span class="pdf-badge badge-gold">🏆 ПрЭВМ №2026664974</span>
+            <span class="pdf-badge badge-cyan">19.05.2026</span>
+            <span>ФИПС · АО «НПО "Андроидная техника"»</span>
+          </div>
         </div>
-        <div class="pravevo-details">
-          <div class="pravevo-detail-item"><div class="pravevo-detail-label">Дата регистрации</div><div class="pravevo-detail-value">19.05.2026</div></div>
-          <div class="pravevo-detail-item"><div class="pravevo-detail-label">Бюллетень</div><div class="pravevo-detail-value">Бюл. №5</div></div>
-          <div class="pravevo-detail-item"><div class="pravevo-detail-label">Язык</div><div class="pravevo-detail-value">JavaScript, Python</div></div>
-          <div class="pravevo-detail-item"><div class="pravevo-detail-label">Объём</div><div class="pravevo-detail-value">2,1 ГБ</div></div>
-          <div class="pravevo-detail-item" style="grid-column:1/-1"><div class="pravevo-detail-label">Правообладатель</div><div class="pravevo-detail-value">АО «НПО "Андроидная техника"»</div></div>
-          <div class="pravevo-detail-item" style="grid-column:1/-1"><div class="pravevo-detail-label">Авторы</div><div class="pravevo-detail-value" style="font-weight:500;color:var(--text-secondary)">Пермяков А.Ф., Литвин А.В., <strong style="color:var(--accent3)">Волков Е.К.</strong>, Рылов Н.И., Зарипов Д.Р.</div></div>
-        </div>
+        <div class="pdf-toggle">▼</div>
       </div>
-
-      <div class="pravevo-full-card">
-        <div class="pravevo-reg-num">🏆 ПрЭВМ №2026665431</div>
-        <div class="pravevo-full-title">«Умный инженер»</div>
-        <div class="pravevo-full-desc">
-          ПО для автоматизированного анализа инженерной и конструкторской документации.
-          Функции: загрузка чертежей, автоматическое распознавание технологических параметров,
-          анализ по разделам «Технология», «Контроль ОТК» и «Глоссарий», формирование рекомендаций по тех. процессу.
+      <div class="pdf-viewer">
+        <div class="pdf-actions">
+          <a class="pdf-action-btn" href="cert-praewm-2026664974.pdf" download>⬇ Скачать</a>
+          <a class="pdf-action-btn" href="cert-praewm-2026664974.pdf" target="_blank">🔗 В новой вкладке</a>
         </div>
-        <div class="pravevo-details">
-          <div class="pravevo-detail-item"><div class="pravevo-detail-label">Дата регистрации</div><div class="pravevo-detail-value">22.05.2026</div></div>
-          <div class="pravevo-detail-item"><div class="pravevo-detail-label">Бюллетень</div><div class="pravevo-detail-value">Бюл. №6</div></div>
-          <div class="pravevo-detail-item"><div class="pravevo-detail-label">Язык</div><div class="pravevo-detail-value">JavaScript, Python</div></div>
-          <div class="pravevo-detail-item"><div class="pravevo-detail-label">Объём</div><div class="pravevo-detail-value">2,3 ГБ</div></div>
-          <div class="pravevo-detail-item" style="grid-column:1/-1"><div class="pravevo-detail-label">Правообладатель</div><div class="pravevo-detail-value">АО «НПО "Андроидная техника"»</div></div>
-          <div class="pravevo-detail-item" style="grid-column:1/-1"><div class="pravevo-detail-label">Авторы</div><div class="pravevo-detail-value" style="font-weight:500;color:var(--text-secondary)">Пермяков А.Ф., Литвин А.В., <strong style="color:var(--accent3)">Волков Е.К.</strong>, Рылов Н.И., Зарипов Д.Р.</div></div>
-        </div>
+        <embed src="cert-praewm-2026664974.pdf" type="application/pdf" />
       </div>
-
     </div>
 
-    <div class="certs-section-label">🎓 Образовательные сертификаты</div>
-    <div class="certs-grid">
-
-      <div class="cert-card gold-card">
-        <div class="cert-card-header">
-          <div class="cert-card-logo samsung">🌐</div>
-          <div>
-            <div class="cert-card-title">Трек «Искусственный интеллект»</div>
-            <div class="cert-card-issuer">Samsung Electronics · Штаб-квартира СНГ</div>
+    <div class="pdf-entry gold-entry" id="pe-praewm2">
+      <div class="pdf-header" onclick="togglePdf('pe-praewm2')">
+        <div class="pdf-logo fips">🏛️</div>
+        <div class="pdf-header-info">
+          <div class="pdf-entry-title">«Умный инженер»</div>
+          <div class="pdf-entry-meta">
+            <span class="pdf-badge badge-gold">🏆 ПрЭВМ №2026665431</span>
+            <span class="pdf-badge badge-cyan">22.05.2026</span>
+            <span>ФИПС · АО «НПО "Андроидная техника"»</span>
           </div>
         </div>
-        <div class="cert-card-body">
-          Успешно завершил обучение по треку «Искусственный интеллект» в объёме 136 академических часов
-          и защитил выпускной проект. Сертификат выдан с отличием вице-президентом Samsung Electronics по странам СНГ.
-        </div>
-        <div class="cert-card-meta">
-          <span class="cert-meta-chip chip-gold">🏅 С отличием</span>
-          <span class="cert-meta-chip chip-cyan">136 акад. часов</span>
-          <span class="cert-meta-chip chip-purple">Апрель 2026</span>
-          <span class="cert-meta-chip chip-blue">№2077427165</span>
-        </div>
+        <div class="pdf-toggle">▼</div>
       </div>
-
-      <div class="cert-card">
-        <div class="cert-card-header">
-          <div class="cert-card-logo stepik">🎓</div>
-          <div>
-            <div class="cert-card-title">PHP</div>
-            <div class="cert-card-issuer">Stepik · stepik.org</div>
-          </div>
+      <div class="pdf-viewer">
+        <div class="pdf-actions">
+          <a class="pdf-action-btn" href="cert-praewm-2026665431.pdf" download>⬇ Скачать</a>
+          <a class="pdf-action-btn" href="cert-praewm-2026665431.pdf" target="_blank">🔗 В новой вкладке</a>
         </div>
-        <div class="cert-card-body">
-          Курс по языку программирования PHP. Успешно завершён и подтверждён сертификатом платформы Stepik.
-        </div>
-        <div class="cert-card-meta">
-          <span class="cert-meta-chip chip-green">✅ Пройден</span>
-          <span class="cert-meta-chip chip-purple">09.09.2023</span>
-          <span class="cert-meta-chip chip-blue">Сертификат 2168763</span>
-        </div>
+        <embed src="cert-praewm-2026665431.pdf" type="application/pdf" />
       </div>
-
-      <div class="cert-card">
-        <div class="cert-card-header">
-          <div class="cert-card-logo stepik">💻</div>
-          <div>
-            <div class="cert-card-title">Углублённое программирование на C/C++</div>
-            <div class="cert-card-issuer">Stepik · stepik.org</div>
-          </div>
-        </div>
-        <div class="cert-card-body">
-          Курс углублённого программирования на языках C и C++. Включает работу с памятью,
-          указателями, структурами данных и алгоритмами.
-        </div>
-        <div class="cert-card-meta">
-          <span class="cert-meta-chip chip-blue">📊 74%</span>
-          <span class="cert-meta-chip chip-purple">05.03.2023</span>
-          <span class="cert-meta-chip chip-blue">Сертификат 1976048</span>
-        </div>
-      </div>
-
     </div>
 
-    <div class="certs-section-label">📋 В процессе регистрации</div>
-    <div class="certs-grid">
-      <div class="pravevo-full-card">
-        <div class="pravevo-reg-num" style="background:rgba(99,102,241,0.12);border-color:rgba(99,102,241,0.3);color:#a5b4fc;">📋 Заявка подана</div>
-        <div class="pravevo-full-title">«Умный помощник СОКРАТ»</div>
-        <div class="pravevo-full-desc">
-          Интеллектуальный корпоративный ИИ-ассистент. Заявка на регистрацию программы для ЭВМ подана в Роспатент (ФИПС).
-          Ожидается получение свидетельства о государственной регистрации.
+    <div class="pdf-entry" id="pe-sokrat" style="border-color:rgba(99,102,241,0.2);">
+      <div class="pdf-header" onclick="togglePdf('pe-sokrat')">
+        <div class="pdf-logo pending">📋</div>
+        <div class="pdf-header-info">
+          <div class="pdf-entry-title">«Умный помощник СОКРАТ»</div>
+          <div class="pdf-entry-meta">
+            <span class="pdf-badge badge-blue">📋 Заявка подана в Роспатент</span>
+            <span>АО «НПО "Андроидная техника"»</span>
+          </div>
         </div>
-        <div class="pravevo-details">
-          <div class="pravevo-detail-item"><div class="pravevo-detail-label">Статус</div><div class="pravevo-detail-value" style="color:#a5b4fc;">Свидетельство подано</div></div>
-          <div class="pravevo-detail-item"><div class="pravevo-detail-label">Правообладатель</div><div class="pravevo-detail-value">АО «НПО "Андроидная техника"»</div></div>
+        <div class="pdf-toggle" style="color:var(--text-muted);">▼</div>
+      </div>
+      <div class="pdf-viewer">
+        <div class="pdf-pending-msg">
+          ⏳ Свидетельство находится в процессе государственной регистрации.<br>
+          Документ будет добавлен после получения.
         </div>
+      </div>
+    </div>
+
+    <div class="pdf-group-label">🎓 Образовательные сертификаты</div>
+
+    <div class="pdf-entry gold-entry" id="pe-samsung">
+      <div class="pdf-header" onclick="togglePdf('pe-samsung')">
+        <div class="pdf-logo samsung">🌐</div>
+        <div class="pdf-header-info">
+          <div class="pdf-entry-title">Трек «Искусственный интеллект» — Samsung Electronics</div>
+          <div class="pdf-entry-meta">
+            <span class="pdf-badge badge-gold">🏅 С отличием</span>
+            <span class="pdf-badge badge-cyan">136 акад. часов</span>
+            <span class="pdf-badge badge-purple">Апрель 2026</span>
+            <span>№2077427165</span>
+          </div>
+        </div>
+        <div class="pdf-toggle">▼</div>
+      </div>
+      <div class="pdf-viewer">
+        <div class="pdf-actions">
+          <a class="pdf-action-btn" href="cert-samsung-ai.pdf" download>⬇ Скачать</a>
+          <a class="pdf-action-btn" href="cert-samsung-ai.pdf" target="_blank">🔗 В новой вкладке</a>
+        </div>
+        <embed src="cert-samsung-ai.pdf" type="application/pdf" />
+      </div>
+    </div>
+
+    <div class="pdf-entry" id="pe-php">
+      <div class="pdf-header" onclick="togglePdf('pe-php')">
+        <div class="pdf-logo stepik">🎓</div>
+        <div class="pdf-header-info">
+          <div class="pdf-entry-title">PHP — Stepik</div>
+          <div class="pdf-entry-meta">
+            <span class="pdf-badge badge-green">✅ Пройден</span>
+            <span class="pdf-badge badge-purple">09.09.2023</span>
+            <span>Сертификат 2168763</span>
+          </div>
+        </div>
+        <div class="pdf-toggle">▼</div>
+      </div>
+      <div class="pdf-viewer">
+        <div class="pdf-actions">
+          <a class="pdf-action-btn" href="cert-stepik-php.pdf" download>⬇ Скачать</a>
+          <a class="pdf-action-btn" href="cert-stepik-php.pdf" target="_blank">🔗 В новой вкладке</a>
+        </div>
+        <embed src="cert-stepik-php.pdf" type="application/pdf" />
+      </div>
+    </div>
+
+    <div class="pdf-entry" id="pe-cpp">
+      <div class="pdf-header" onclick="togglePdf('pe-cpp')">
+        <div class="pdf-logo stepik">💻</div>
+        <div class="pdf-header-info">
+          <div class="pdf-entry-title">Углублённое программирование на C/C++ — Stepik</div>
+          <div class="pdf-entry-meta">
+            <span class="pdf-badge badge-blue">📊 74%</span>
+            <span class="pdf-badge badge-purple">05.03.2023</span>
+            <span>Сертификат 1976048</span>
+          </div>
+        </div>
+        <div class="pdf-toggle">▼</div>
+      </div>
+      <div class="pdf-viewer">
+        <div class="pdf-actions">
+          <a class="pdf-action-btn" href="cert-stepik-cpp.pdf" download>⬇ Скачать</a>
+          <a class="pdf-action-btn" href="cert-stepik-cpp.pdf" target="_blank">🔗 В новой вкладке</a>
+        </div>
+        <embed src="cert-stepik-cpp.pdf" type="application/pdf" />
       </div>
     </div>
 
@@ -821,6 +918,11 @@
 </div><!-- /page -->
 
 <script>
+  function togglePdf(id) {
+    const entry = document.getElementById(id);
+    entry.classList.toggle('open');
+  }
+
   function switchTab(name) {
     document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
