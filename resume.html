@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Волков Евгений Кириллович — Резюме</title>
+  <meta name="description" content="Резюме Волкова Евгения Кирилловича — Тим-лид отдела ИИ, бизнес-аналитик, специалист в области искусственного интеллекта." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-primary: #0a0e1a;
+      --bg-secondary: #111827;
+      --bg-card: #141c2e;
+      --bg-card2: #1a2440;
+      --accent: #6366f1;
+      --accent2: #8b5cf6;
+      --accent3: #06b6d4;
+      --accent-glow: rgba(99, 102, 241, 0.25);
+      --gold: #f59e0b;
+      --gold-light: #fbbf24;
+      --green: #10b981;
+      --green-light: #34d399;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --border: rgba(99, 102, 241, 0.18);
+      --border-soft: rgba(255,255,255,0.06);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 20% -10%, rgba(99,102,241,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 85% 80%, rgba(139,92,246,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 30% at 60% 20%, rgba(6,182,212,0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .page { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; position: relative; z-index: 1; }
+
+    /* Print button */
+    .print-btn {
+      position: fixed; top: 24px; right: 24px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff; border: none; padding: 12px 24px; border-radius: 50px;
+      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
+      cursor: pointer; z-index: 100;
+      box-shadow: 0 4px 24px var(--accent-glow);
+      transition: all 0.3s; display: flex; align-items: center; gap: 8px;
+    }
+    .print-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(99,102,241,0.4); }
+
+    /* Hero */
+    .hero {
+      display: grid; grid-template-columns: auto 1fr;
+      gap: 40px; align-items: center;
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card2) 100%);
+      border: 1px solid var(--border); border-radius: 24px;
+      padding: 48px; margin-bottom: 32px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 240px; height: 240px;
+      background: radial-gradient(circle, rgba(99,102,241,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .avatar {
+      width: 130px; height: 130px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Outfit', sans-serif; font-size: 48px; font-weight: 700; color: #fff;
+      position: relative; z-index: 1;
+      box-shadow: 0 0 0 4px rgba(99,102,241,0.2), 0 0 60px rgba(99,102,241,0.3);
+      animation: pulse-ring 3s ease infinite;
+    }
+    .avatar-wrap { position: relative; }
+    .ai-badge {
+      position: absolute; bottom: 4px; right: 4px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #000; font-size: 10px; font-weight: 700;
+      padding: 3px 8px; border-radius: 20px; letter-spacing: 0.5px;
+    }
+    @keyframes pulse-ring {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(99,102,241,0.2), 0 0 60px rgba(99,102,241,0.3); }
+      50% { box-shadow: 0 0 0 8px rgba(99,102,241,0.1), 0 0 80px rgba(99,102,241,0.4); }
+    }
+    .hero-info { position: relative; z-index: 1; }
+    .hero-name {
+      font-family: 'Outfit', sans-serif; font-size: 38px; font-weight: 800;
+      background: linear-gradient(135deg, #f1f5f9, var(--accent3), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      line-height: 1.1; margin-bottom: 8px;
+    }
+    .hero-title { font-size: 18px; font-weight: 500; color: var(--accent3); margin-bottom: 20px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
+    .meta-item { display: flex; align-items: center; gap: 7px; font-size: 14px; color: var(--text-secondary); }
+    .meta-icon { width: 18px; height: 18px; opacity: 0.7; flex-shrink: 0; }
+    .meta-item a { color: var(--accent3); text-decoration: none; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .hero-tag {
+      background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.25);
+      color: #a5b4fc; padding: 5px 14px; border-radius: 20px; font-size: 13px; font-weight: 500;
+    }
+    .hero-tag.cyan { background: rgba(6,182,212,0.1); border-color: rgba(6,182,212,0.2); color: #67e8f9; }
+    .hero-tag.green { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.2); color: var(--green-light); }
+
+    /* Grid */
+    .main-grid { display: grid; grid-template-columns: 1fr 340px; gap: 24px; align-items: start; }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border-soft);
+      border-radius: var(--radius); padding: 32px; margin-bottom: 24px;
+      position: relative; overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .card:hover { border-color: var(--border); box-shadow: 0 4px 32px rgba(0,0,0,0.2); }
+    .card-title {
+      font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: var(--text-primary);
+      display: flex; align-items: center; gap: 10px; margin-bottom: 24px;
+    }
+    .card-title-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .icon-purple { background: rgba(99,102,241,0.15); }
+    .icon-cyan { background: rgba(6,182,212,0.12); }
+    .icon-purple2 { background: rgba(139,92,246,0.15); }
+    .icon-green { background: rgba(16,185,129,0.12); }
+
+    /* Timeline */
+    .timeline { position: relative; }
+    .timeline::before {
+      content: ''; position: absolute; left: 17px; top: 8px; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+    .tl-item { padding-left: 52px; padding-bottom: 36px; position: relative; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
+      position: absolute; left: 9px; top: 4px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 12px var(--accent-glow); z-index: 1;
+    }
+    .tl-dot.current {
+      background: linear-gradient(135deg, var(--green), var(--accent3));
+      box-shadow: 0 0 12px rgba(16,185,129,0.4);
+      animation: dot-pulse 2s ease infinite;
+    }
+    @keyframes dot-pulse {
+      0%, 100% { box-shadow: 0 0 12px rgba(16,185,129,0.4); }
+      50% { box-shadow: 0 0 24px rgba(16,185,129,0.7); }
+    }
+    .tl-period { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .tl-company { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .tl-role { font-size: 15px; font-weight: 500; color: var(--accent3); margin-bottom: 14px; }
+    .tl-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px; }
+    .current-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.25);
+      color: var(--green-light); padding: 4px 12px; border-radius: 20px;
+      font-size: 12px; font-weight: 600; margin-bottom: 14px;
+    }
+    .current-badge::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green); animation: blink 1.5s ease infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    /* Projects */
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+    .project-card {
+      background: rgba(255,255,255,0.03); border: 1px solid var(--border-soft);
+      border-radius: var(--radius-sm); padding: 14px 16px;
+      transition: all 0.25s; position: relative;
+    }
+    .project-card:hover { background: rgba(99,102,241,0.06); border-color: rgba(99,102,241,0.2); transform: translateY(-2px); }
+    .project-card.has-cert { border-color: rgba(245,158,11,0.2); background: rgba(245,158,11,0.04); }
+    .project-card.has-cert:hover { border-color: rgba(245,158,11,0.4); background: rgba(245,158,11,0.07); }
+    .project-status {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 10px; margin-bottom: 8px;
+    }
+    .status-cert { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); color: var(--gold-light); }
+    .status-pending { background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.25); color: #a5b4fc; }
+    .status-dev { background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.2); color: #67e8f9; }
+    .project-name { font-size: 14px; font-weight: 600; color: var(--text-primary); line-height: 1.4; }
+    .project-desc { font-size: 12px; color: var(--text-muted); margin-top: 4px; line-height: 1.5; }
+    .cert-num { font-size: 11px; color: var(--gold); margin-top: 6px; font-weight: 500; }
+
+    /* Skills */
+    .skills-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag {
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border-soft);
+      color: var(--text-secondary); padding: 6px 14px; border-radius: 20px;
+      font-size: 13px; font-weight: 500; transition: all 0.2s; cursor: default;
+    }
+    .skill-tag:hover { background: rgba(99,102,241,0.1); border-color: rgba(99,102,241,0.3); color: var(--text-primary); }
+    .skill-tag.featured { background: rgba(99,102,241,0.1); border-color: rgba(99,102,241,0.25); color: #a5b4fc; }
+    .skill-tag.tech { background: rgba(6,182,212,0.08); border-color: rgba(6,182,212,0.2); color: #67e8f9; }
+    .skill-tag.ai { background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.25); color: #c4b5fd; }
+    .skills-category { margin-bottom: 20px; }
+    .skills-cat-label { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+
+    /* Sidebar */
+    .sidebar-card {
+      background: var(--bg-card); border: 1px solid var(--border-soft);
+      border-radius: var(--radius); padding: 24px; margin-bottom: 20px;
+      transition: border-color 0.3s;
+    }
+    .sidebar-card:hover { border-color: var(--border); }
+    .sidebar-title {
+      font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700;
+      color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 18px; display: flex; align-items: center; gap: 8px;
+    }
+    .sidebar-title-line { flex: 1; height: 1px; background: var(--border-soft); }
+
+    /* Contacts */
+    .contact-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border-soft); }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: rgba(99,102,241,0.1); display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+    .contact-label { font-size: 11px; color: var(--text-muted); margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .contact-value { font-size: 14px; color: var(--text-primary); font-weight: 500; }
+    .contact-value a { color: var(--accent3); text-decoration: none; }
+
+    /* Education */
+    .edu-item { padding: 12px 0; border-bottom: 1px solid var(--border-soft); }
+    .edu-item:last-child { border-bottom: none; }
+    .edu-year { font-size: 12px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .edu-name { font-size: 14px; font-weight: 600; color: var(--text-primary); line-height: 1.4; margin-bottom: 3px; }
+    .edu-spec { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+    .edu-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25);
+      color: var(--green-light); padding: 3px 10px; border-radius: 10px;
+      font-size: 11px; font-weight: 600; margin-top: 6px;
+    }
+
+    /* Certs */
+    .cert-item { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border-soft); align-items: flex-start; }
+    .cert-item:last-child { border-bottom: none; }
+    .cert-logo {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;
+    }
+    .cert-logo.samsung { background: linear-gradient(135deg, #1428a0, #2048c8); }
+    .cert-logo.stepik { background: linear-gradient(135deg, #7b2ff7, #a855f7); }
+    .cert-logo.fips { background: linear-gradient(135deg, #b45309, #d97706); }
+    .cert-title { font-size: 13px; font-weight: 600; color: var(--text-primary); line-height: 1.4; margin-bottom: 3px; }
+    .cert-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+    .cert-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 600; }
+    .cert-badge.gold { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); color: var(--gold-light); }
+    .cert-badge.purple { background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.25); color: #c4b5fd; }
+    .cert-badge.blue { background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.25); color: #a5b4fc; }
+
+    /* ПрЭВМ */
+    .pravevo-item {
+      background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(251,191,36,0.03));
+      border: 1px solid rgba(245,158,11,0.2); border-radius: 12px; padding: 16px; margin-bottom: 10px;
+    }
+    .pravevo-num { font-size: 12px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .pravevo-name { font-size: 14px; font-weight: 600; color: var(--text-primary); line-height: 1.4; margin-bottom: 4px; }
+    .pravevo-meta { font-size: 12px; color: var(--text-muted); }
+    .pravevo-authors { font-size: 12px; color: var(--text-secondary); margin-top: 6px; }
+
+    /* Lang */
+    .lang-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; }
+    .lang-name { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+    .lang-level { font-size: 12px; color: var(--text-muted); background: rgba(255,255,255,0.05); padding: 3px 10px; border-radius: 8px; }
+
+    /* About */
+    .about-text { font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
+
+    /* Salary */
+    .salary-block {
+      background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(139,92,246,0.08));
+      border: 1px solid rgba(99,102,241,0.2); border-radius: 12px;
+      padding: 16px 20px; margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .salary-label { font-size: 12px; color: var(--text-muted); }
+    .salary-value {
+      font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    @media print {
+      /* Force exact colour reproduction — must be first */
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 10mm 12mm;
+      }
+      /* Keep dark theme intact */
+      html, body {
+        background: #0a0e1a !important;
+        color: #f1f5f9 !important;
+        font-size: 12px;
+      }
+      body::before {
+        /* keep background gradients visible */
+        position: fixed;
+        background:
+          radial-gradient(ellipse 80% 50% at 20% -10%, rgba(99,102,241,0.18) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 40% at 85% 80%, rgba(139,92,246,0.12) 0%, transparent 55%) !important;
+      }
+      /* Hide print button */
+      .print-btn { display: none !important; }
+      /* Layout — single column for A4 */
+      .page { max-width: 100%; padding: 0; }
+      .main-grid {
+        display: grid;
+        grid-template-columns: 1fr 260px;
+        gap: 12px;
+      }
+      /* Prevent elements breaking across pages */
+      .card, .sidebar-card, .tl-item, .project-card, .cert-item, .pravevo-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      /* Restore card backgrounds exactly */
+      .card, .sidebar-card {
+        background: #141c2e !important;
+        border: 1px solid rgba(99,102,241,0.18) !important;
+      }
+      .hero {
+        background: linear-gradient(135deg, #141c2e 0%, #1a2440 100%) !important;
+        border: 1px solid rgba(99,102,241,0.18) !important;
+        padding: 28px !important;
+      }
+      /* Keep gradient text */
+      .hero-name {
+        background: linear-gradient(135deg, #f1f5f9, #06b6d4, #6366f1) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+      }
+      .salary-value {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+      }
+      /* Keep avatar gradient */
+      .avatar {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4) !important;
+        box-shadow: none !important;
+        animation: none !important;
+      }
+      /* Disable animations */
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      /* Keep project cards */
+      .project-card.has-cert {
+        background: rgba(245,158,11,0.04) !important;
+        border-color: rgba(245,158,11,0.2) !important;
+      }
+      .pravevo-item {
+        background: rgba(245,158,11,0.06) !important;
+        border: 1px solid rgba(245,158,11,0.2) !important;
+      }
+      .salary-block {
+        background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(139,92,246,0.08)) !important;
+        border: 1px solid rgba(99,102,241,0.2) !important;
+      }
+      /* Restore tag colours */
+      .skill-tag.featured { background: rgba(99,102,241,0.1) !important; border-color: rgba(99,102,241,0.25) !important; color: #a5b4fc !important; }
+      .skill-tag.tech { background: rgba(6,182,212,0.08) !important; border-color: rgba(6,182,212,0.2) !important; color: #67e8f9 !important; }
+      .skill-tag.ai { background: rgba(139,92,246,0.1) !important; border-color: rgba(139,92,246,0.25) !important; color: #c4b5fd !important; }
+      .hero-tag { background: rgba(99,102,241,0.12) !important; border-color: rgba(99,102,241,0.25) !important; color: #a5b4fc !important; }
+      .hero-tag.cyan { background: rgba(6,182,212,0.1) !important; color: #67e8f9 !important; }
+      .hero-tag.green { background: rgba(16,185,129,0.1) !important; color: #34d399 !important; }
+      /* Make all text visible */
+      .text-primary, h1, h2, h3, p, span, div { color: inherit; }
+      /* Ensure opacity 1 for animated items */
+      .skill-tag, .project-card, .cert-item, .pravevo-item {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .hero-meta { justify-content: center; }
+      .hero-tags { justify-content: center; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 32px 24px; }
+      .hero-name { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()" id="print-resume-btn">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <polyline points="6 9 6 2 18 2 18 9"/>
+    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+    <rect x="6" y="14" width="12" height="8"/>
+  </svg>
+  Печать / PDF
+</button>
+
+<div class="page">
+
+  <header class="hero">
+    <div class="avatar-wrap">
+      <div class="avatar">ЕВ</div>
+      <div class="ai-badge">AI TL</div>
+    </div>
+    <div class="hero-info">
+      <h1 class="hero-name">Волков Евгений Кириллович</h1>
+      <div class="hero-title">Тим-лид отдела ИИ · Бизнес-аналитик · AI-специалист</div>
+      <div class="hero-meta">
+        <span class="meta-item">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.38 2 2 0 0 1 3.56 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.47a16 16 0 0 0 6 6l.84-.84a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 16z"/></svg>
+          +7 (996) 235-03-75
+        </span>
+        <span class="meta-item">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <a href="mailto:volk20042261@gmail.com">volk20042261@gmail.com</a>
+        </span>
+        <span class="meta-item">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Магнитогорск
+        </span>
+        <span class="meta-item">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          22 апреля 2004 (21 год)
+        </span>
+      </div>
+      <div class="hero-tags">
+        <span class="hero-tag cyan">🤖 Искусственный интеллект</span>
+        <span class="hero-tag">📊 Бизнес-анализ</span>
+        <span class="hero-tag">👥 Team Lead</span>
+        <span class="hero-tag cyan">🐍 Python · JavaScript</span>
+        <span class="hero-tag green">✅ Готов к переезду</span>
+        <span class="hero-tag">🌐 Удалённо</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-grid">
+    <div class="left-col">
+
+      <div class="salary-block">
+        <div>
+          <div class="salary-label">Желаемая должность</div>
+          <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-top:3px;">Тим-лид отдела ИИ / Бизнес-аналитик</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Полная занятость · Удалённо</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="salary-label">Зарплата</div>
+          <div class="salary-value">120 000 ₽</div>
+          <div style="font-size:11px;color:var(--text-muted);">на руки</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">
+          <div class="card-title-icon icon-purple">👤</div>
+          О себе
+        </h2>
+        <p class="about-text">
+          Тим-лид отдела ИИ и бизнес-аналитик с практическим опытом реализации проектов в области искусственного интеллекта.
+          Руководю командой разработки ИИ-решений в АО «НПО "Андроидная Техника"», где под моим руководством реализовано
+          несколько проектов, на ряд из которых уже получены свидетельства о государственной регистрации программ для ЭВМ (ФИПС/Роспатент).
+          Имею опыт описания технических требований, разработки технической документации, создания прототипов
+          и постановки задач разработчикам. Сертифицирован по треку «Искусственный интеллект» Samsung с отличием (136 академических часов).
+        </p>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">
+          <div class="card-title-icon icon-cyan">💼</div>
+          Опыт работы
+        </h2>
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot current"></div>
+            <div class="tl-period">17 февраля 2026 — настоящее время · 4+ месяца</div>
+            <div class="tl-company">АО «НПО "Андроидная Техника"»</div>
+            <div class="tl-role">Тим-лид отдела искусственного интеллекта</div>
+            <div class="current-badge">Работаю сейчас</div>
+            <div class="tl-desc">
+              Руководство командой разработки ИИ-решений в рамках ИИ-трансформации предприятия.
+              Постановка задач, контроль качества разработки, взаимодействие с заказчиками и стейкхолдерами.
+              Под моим руководством реализовано 7 проектов, на часть из которых получены
+              свидетельства о государственной регистрации программ для ЭВМ.
+            </div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:12px;">Реализованные проекты (ИИ-трансформация):</div>
+            <div class="projects-grid">
+              <div class="project-card has-cert">
+                <div class="project-status status-cert">🏆 Свидетельство получено</div>
+                <div class="project-name">Экспортный контроль</div>
+                <div class="project-desc">Система анализа экспортного контроля научных публикаций</div>
+                <div class="cert-num">ПрЭВМ №2026664974 · 19.05.2026</div>
+              </div>
+              <div class="project-card has-cert">
+                <div class="project-status status-cert">🏆 Свидетельство получено</div>
+                <div class="project-name">Умный инженер</div>
+                <div class="project-desc">ПО для автоматизированного анализа инженерной и конструкторской документации</div>
+                <div class="cert-num">ПрЭВМ №2026665431 · 22.05.2026</div>
+              </div>
+              <div class="project-card">
+                <div class="project-status status-pending">📋 Подано свидетельство</div>
+                <div class="project-name">Умный помощник СОКРАТ</div>
+                <div class="project-desc">Интеллектуальный корпоративный ИИ-ассистент</div>
+              </div>
+              <div class="project-card">
+                <div class="project-status status-dev">⚙️ Реализован</div>
+                <div class="project-name">Онтологическая система маркетинга</div>
+                <div class="project-desc">Онтологическая система отдела маркетинга с ИИ-агентами</div>
+              </div>
+              <div class="project-card">
+                <div class="project-status status-dev">⚙️ Реализован</div>
+                <div class="project-name">Тренажёр продаж</div>
+                <div class="project-desc">Тренажёр для отдела продаж и анализ звонков</div>
+              </div>
+              <div class="project-card">
+                <div class="project-status status-dev">⚙️ Реализован</div>
+                <div class="project-name">Видеоконтроль производства</div>
+                <div class="project-desc">Фиксация дефектов и отклонений от тех. процессов через камеры на производстве</div>
+              </div>
+              <div class="project-card" style="grid-column: 1 / -1;">
+                <div class="project-status status-dev">⚙️ Реализован</div>
+                <div class="project-name">Сервис оценки ИИ-зрелости</div>
+                <div class="project-desc">Платформа для оценки уровня ИИ-зрелости организаций с детальной аналитикой</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-period">Апрель 2023 — Сентябрь 2023 · 6 месяцев</div>
+            <div class="tl-company">ООО «ЦИТ» ФАКТ</div>
+            <div class="tl-role">Бизнес-аналитик</div>
+            <div class="tl-desc">
+              Разработка прототипов, создание интерактивных макетов для тестирования пользовательского опыта.
+              Описание технических требований и разработка технической документации для разработчиков:
+              диаграммы UML, описания API, использование инструментов документирования.
+              Анализ текущих бизнес-процессов и разработка рекомендаций для руководства.
+              Взаимодействие с ключевыми участниками для выявления требований и выработки стратегий.
+              Анализ данных с целью оптимизации производственных процессов.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">
+          <div class="card-title-icon icon-purple2">⚡</div>
+          Навыки
+        </h2>
+        <div class="skills-category">
+          <div class="skills-cat-label">🤖 Искусственный интеллект</div>
+          <div class="skills-wrap">
+            <span class="skill-tag ai">Machine Learning</span>
+            <span class="skill-tag ai">LLM / ГПТ</span>
+            <span class="skill-tag ai">ИИ-агенты</span>
+            <span class="skill-tag ai">Компьютерное зрение</span>
+            <span class="skill-tag ai">Онтологии</span>
+            <span class="skill-tag ai">AutoML</span>
+            <span class="skill-tag ai">Автоматизация ИИ-процессов</span>
+          </div>
+        </div>
+        <div class="skills-category">
+          <div class="skills-cat-label">💻 Технологии</div>
+          <div class="skills-wrap">
+            <span class="skill-tag tech">Python</span>
+            <span class="skill-tag tech">JavaScript</span>
+            <span class="skill-tag tech">MS SQL</span>
+            <span class="skill-tag tech">Power BI</span>
+            <span class="skill-tag tech">Microsoft Access</span>
+            <span class="skill-tag tech">C/C++</span>
+            <span class="skill-tag tech">PHP</span>
+            <span class="skill-tag tech">Excel</span>
+          </div>
+        </div>
+        <div class="skills-category">
+          <div class="skills-cat-label">📊 Бизнес-анализ и методологии</div>
+          <div class="skills-wrap">
+            <span class="skill-tag featured">BPMN</span>
+            <span class="skill-tag featured">UML</span>
+            <span class="skill-tag featured">DFD</span>
+            <span class="skill-tag featured">IDEF</span>
+            <span class="skill-tag featured">Анализ данных</span>
+            <span class="skill-tag featured">Бизнес-анализ</span>
+            <span class="skill-tag featured">Визуализация данных</span>
+            <span class="skill-tag featured">Прогнозирование</span>
+            <span class="skill-tag featured">Сводные таблицы</span>
+            <span class="skill-tag featured">Анализ финансовых показателей</span>
+          </div>
+        </div>
+        <div class="skills-category">
+          <div class="skills-cat-label">🧩 Управление и коммуникация</div>
+          <div class="skills-wrap">
+            <span class="skill-tag">CRM</span>
+            <span class="skill-tag">Постановка задач разработчикам</span>
+            <span class="skill-tag">Стандартизация процессов</span>
+            <span class="skill-tag">Подготовка отчётов</span>
+            <span class="skill-tag">Деловая коммуникация</span>
+            <span class="skill-tag">Подготовка презентаций</span>
+            <span class="skill-tag">MS PowerPoint</span>
+            <span class="skill-tag">Оперативное планирование</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <aside class="right-col">
+
+      <div class="sidebar-card">
+        <div class="sidebar-title">Контакты <div class="sidebar-title-line"></div></div>
+        <div class="contact-row">
+          <div class="contact-icon">📱</div>
+          <div>
+            <div class="contact-label">Телефон</div>
+            <div class="contact-value">+7 (996) 235-03-75</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value"><a href="mailto:volk20042261@gmail.com">volk20042261@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Город</div>
+            <div class="contact-value">Магнитогорск</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">🏳️</div>
+          <div>
+            <div class="contact-label">Гражданство</div>
+            <div class="contact-value">Россия</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">✈️</div>
+          <div>
+            <div class="contact-label">Переезд</div>
+            <div class="contact-value">Готов к переезду</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-title">Образование <div class="sidebar-title-line"></div></div>
+        <div class="edu-item">
+          <div class="edu-year">2022 — 2026</div>
+          <div class="edu-name">Магнитогорский государственный технический университет им. Г.И. Носова</div>
+          <div class="edu-spec">Бизнес-информатика<br>Искусственный интеллект в сфере экономики</div>
+          <div class="edu-badge">🎓 Высшее образование · 2026</div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-title">Свидетельства ПрЭВМ <div class="sidebar-title-line"></div></div>
+        <div class="pravevo-item">
+          <div class="pravevo-num">ПрЭВМ №2026664974</div>
+          <div class="pravevo-name">«Система анализа экспортного контроля научных публикаций»</div>
+          <div class="pravevo-meta">Зарегистрировано: 19.05.2026 · ФИПС</div>
+          <div class="pravevo-meta">JavaScript, Python · 2,1 ГБ</div>
+          <div class="pravevo-authors">Правообладатель: АО «НПО "Андроидная техника"»</div>
+        </div>
+        <div class="pravevo-item">
+          <div class="pravevo-num">ПрЭВМ №2026665431</div>
+          <div class="pravevo-name">«Умный инженер»</div>
+          <div class="pravevo-meta">Зарегистрировано: 22.05.2026 · ФИПС</div>
+          <div class="pravevo-meta">JavaScript, Python · 2,3 ГБ</div>
+          <div class="pravevo-authors">Правообладатель: АО «НПО "Андроидная техника"»</div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-title">Сертификаты <div class="sidebar-title-line"></div></div>
+        <div class="cert-item">
+          <div class="cert-logo samsung">🌐</div>
+          <div>
+            <div class="cert-title">Трек «Искусственный интеллект»</div>
+            <div class="cert-meta">Samsung Electronics · Апрель 2026</div>
+            <div class="cert-meta">136 акад. часов · №2077427165</div>
+            <span class="cert-badge gold">🏅 С отличием</span>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-logo stepik">🎓</div>
+          <div>
+            <div class="cert-title">PHP</div>
+            <div class="cert-meta">Stepik · 09.09.2023</div>
+            <div class="cert-meta">stepik.org/cert/2168763</div>
+            <span class="cert-badge purple">✅ Пройден</span>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-logo stepik">💻</div>
+          <div>
+            <div class="cert-title">Углублённое программирование C/C++</div>
+            <div class="cert-meta">Stepik · 05.03.2023</div>
+            <div class="cert-meta">stepik.org/cert/1976048</div>
+            <span class="cert-badge blue">📊 74%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-title">Языки <div class="sidebar-title-line"></div></div>
+        <div class="lang-row">
+          <span class="lang-name">🇷🇺 Русский</span>
+          <span class="lang-level">Родной</span>
+        </div>
+        <div class="lang-row" style="border-top: 1px solid rgba(255,255,255,0.06);">
+          <span class="lang-name">🇬🇧 Английский</span>
+          <span class="lang-level">B1 — Средний</span>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.05 });
+
+  document.querySelectorAll('.skill-tag, .project-card, .cert-item, .pravevo-item').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(10px)';
+    el.style.transition = `opacity 0.5s ease ${i * 25}ms, transform 0.5s ease ${i * 25}ms`;
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
